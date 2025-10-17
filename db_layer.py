@@ -6,9 +6,10 @@ import pandas as pd
 from typing import Dict, List
 
 
-# Resolve DB next to this file (works locally and in Streamlit Cloud)
-BASE_DIR = Path(__file__).parent
-DB_PATH = BASE_DIR / "SalesDW.db"  # or BASE_DIR / "db" / "SalesDW.db"
+
+DB_PATH = os.path.join(os.path.dirname(__file__), "SalesDW.db")
+conn = sqlite3.connect(DB_PATH)
+
 
 def connect_db(path: str = DB_PATH):
     con = sqlite3.connect(path)
