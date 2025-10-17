@@ -1,10 +1,13 @@
 # db_layer.py
+from pathlib import Path
 import os, re, sqlite3
 import pandas as pd
 from typing import Dict, List
 
-DB_PATH = r"E:\JOB_TRAINING\4-Retail_Assistant(RAG)\db\SalesDW.db"
 
+# Resolve DB next to this file (works locally and in Streamlit Cloud)
+BASE_DIR = Path(__file__).parent
+DB_PATH = BASE_DIR / "SalesDW.db"  # or BASE_DIR / "db" / "SalesDW.db"
 
 def connect_db(path: str = DB_PATH):
     con = sqlite3.connect(path)
